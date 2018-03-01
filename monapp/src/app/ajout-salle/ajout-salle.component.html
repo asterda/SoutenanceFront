@@ -1,0 +1,8 @@
+<p>
+  ajout-salle works!
+</p>
+
+<form [formGroup]="form" novalidate (ngSubmit)="submit()">
+  <input type="text" formControlName="titre" placeholder="titre"/>
+  <button type="submit">Envoyer</button>
+</form>
