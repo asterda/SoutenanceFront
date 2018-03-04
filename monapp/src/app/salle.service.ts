@@ -16,4 +16,16 @@ export class SalleService {
     return this.http.get<Salle[]>('http://localhost:8080/factoryBack/salles');
   }
 
+  delete(code: string) {
+    return this.http.delete('http://localhost:8080/factoryBack/salles/' + code);
+  }
+
+  create(salle: Salle): Observable<Salle> {
+    return this.http.post<Salle>('http://localhost:8080/factoryBack/salles', salle);
+  }
+
+  update(salle: Salle): Observable<Salle> {
+    return this.http.put<Salle>('http://localhost:8080/factoryBack/salles', salle);
+  }
+
 }

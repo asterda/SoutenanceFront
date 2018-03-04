@@ -14,6 +14,7 @@ export class SallesComponent implements OnInit {
   salles: Observable<Salle[]>;
   isLoading = false;
   selectedSalle: Salle;
+  nouvelleSalle = new Salle();
 
   constructor(
     private salleService: SalleService
