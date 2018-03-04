@@ -8,10 +8,11 @@
 </ul>
 
 <div *ngIf="selectedSalle">
-  <h3>Editer: {{selectedSalle.name}}</h3>
-  <app-salle [salle]="selectedSalle" [modePersistence]="ModePersistence.UPDATE" ]></app-salle>
+  <h3>Editer: {{selectedSalle.code}}</h3>
+  <app-salle [salle]="selectedSalle" [modePersistence]="update"></app-salle>
 </div>
+
 <div *ngIf="!selectedSalle">
   <h3>Créer nouvelle salle:</h3>
-  <app-salle [salle]="nouvelleSalle" [modePersistence]="ModePersistence.CREATE" ]></app-salle>
+  <app-salle [salle]="nouvelleSalle" [modePersistence]="create"></app-salle>
 </div>

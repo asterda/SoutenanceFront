@@ -3,6 +3,7 @@ import {Observable} from "rxjs/Observable";
 import {Salle} from "../../model/Salle";
 import {SalleService} from "../salle.service";
 import 'rxjs/add/operator/finally';
+import {ModePersistence} from "../../model/ModePersistence";
 
 @Component({
   selector: 'app-salles',
@@ -15,6 +16,8 @@ export class SallesComponent implements OnInit {
   isLoading = false;
   selectedSalle: Salle;
   nouvelleSalle = new Salle();
+  create = ModePersistence.CREATE;
+  update = ModePersistence.UPDATE;
 
   constructor(
     private salleService: SalleService
