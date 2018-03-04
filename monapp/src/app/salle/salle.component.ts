@@ -1,7 +1,8 @@
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
 import {Salle} from "../../model/Salle";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ModePersistence} from "../../model/ModePersistence";
+import {SalleService} from "../salle.service";
 
 @Component({
   selector: 'app-salle',
@@ -14,8 +15,11 @@ export class SalleComponent implements OnInit, OnChanges {
   @Input() modePersistence: ModePersistence;
   salleForm: FormGroup;
 
+  @Output() dbChanged: EventEmitter<any> = new EventEmitter();
+
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private salleService: SalleService
   ) {
     this.createForm();
   }
@@ -53,11 +57,17 @@ export class SalleComponent implements OnInit, OnChanges {
 
   onSubmit() {
     this.salle = this.preparePersistSalle();
-    // ModePersistence
+    if(this.modePersistence === ModePersistence.UPDATE){
+      this.salleService.update(this.salle).subscribe(/* gerer erreur */);
+    }else if(this.modePersistence === ModePersistence.CREATE){
+      this.salleService.create(this.salle).subscribe(/* gerer erreur */);
+      this.modePersistence = ModePersistence.UPDATE;
+    }
     this.ngOnChanges();
+    this.dbChanged.emit();
   }
 
-  ngOnChanges() {
+  ngOnChanges() { // Regarde si des @Input ont été modifiés (ici salle et modePersistence)
     this.salleForm.reset({
       code: this.salle.code,
       coutJour: this.salle.coutJour,
@@ -78,19 +88,14 @@ export class SalleComponent implements OnInit, OnChanges {
     }else if(this.modePersistence === ModePersistence.CREATE){
       code = formModel.code as string;
     }
-    console.log(code); // Pas formModel, car champ disabled
-    console.log(formModel.coutJour as number);
-    console.log(formModel.enPanneOuInutilisable as boolean);
-    console.log(formModel.capacite as number);
-    console.log(formModel.etage as number);
-    /*
     const sallePersist: Salle = {
-
-    };
-    */
-
-
-    return new Salle();
+      code: code,
+      coutJour: formModel.coutJour as number,
+      enPanneOuInutilisable: formModel.enPanneOuInutilisable as boolean,
+      capacite: formModel.capacite as number,
+      etage: formModel.etage as number
+    }
+    return sallePersist;
   }
 
 }

@@ -2,17 +2,18 @@
 <h3 *ngIf="!isLoading">Liste des salles:</h3>
 
 <ul>
-  <li *ngFor="let salle of salles | async">
+  <!--<li *ngFor="let salle of salles | async">-->
+  <li *ngFor="let salle of salles">
     <a (click)="select(salle)">{{salle.code}}</a>
   </li>
 </ul>
 
 <div *ngIf="selectedSalle">
   <h3>Editer: {{selectedSalle.code}}</h3>
-  <app-salle [salle]="selectedSalle" [modePersistence]="update"></app-salle>
+  <app-salle [salle]="selectedSalle" [modePersistence]="update" (dbChanged)="onDbChanged($event)"></app-salle>
 </div>
 
 <div *ngIf="!selectedSalle">
   <h3>Créer nouvelle salle:</h3>
-  <app-salle [salle]="nouvelleSalle" [modePersistence]="create"></app-salle>
+  <app-salle [salle]="nouvelleSalle" [modePersistence]="create" (dbChanged)="onDbChanged($event)"></app-salle>
 </div>

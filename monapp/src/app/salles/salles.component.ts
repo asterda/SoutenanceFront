@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Salle} from "../../model/Salle";
 import {SalleService} from "../salle.service";
@@ -12,7 +12,8 @@ import {ModePersistence} from "../../model/ModePersistence";
 })
 export class SallesComponent implements OnInit {
 
-  salles: Observable<Salle[]>;
+  //salles: Observable<Salle[]>;
+  salles: Salle[];
   isLoading = false;
   selectedSalle: Salle;
   nouvelleSalle = new Salle();
@@ -29,12 +30,23 @@ export class SallesComponent implements OnInit {
 
   getSalles(){
     this.isLoading = true;
+    /*
     this.salles = this.salleService.findAll()
       .finally(() => this.isLoading = false);
+      */
+    this.salleService.findAll().subscribe(
+      salles => this.salles = salles,
+      error => console.log("à modifier"),
+      () => this.isLoading = false
+    );
   }
 
   select(salle: Salle) {
     this.selectedSalle = salle;
+  }
+
+  onDbChanged(event) {
+    this.getSalles();
   }
 
 }
