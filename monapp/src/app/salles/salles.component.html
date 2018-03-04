@@ -1,0 +1,13 @@
+<h3 *ngIf="isLoading"><i>Chargement des salles... </i></h3>
+<h3 *ngIf="!isLoading">Liste des salles:</h3>
+
+<ul>
+  <li *ngFor="let salle of salles | async">
+    <a (click)="select(salle)">{{salle.code}}</a>
+  </li>
+</ul>
+
+<div *ngIf="selectedSalle">
+  <h3>Editer: {{selectedSalle.name}}</h3>
+  <app-salle [salle]="selectedSalle"></app-salle>
+</div>

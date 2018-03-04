@@ -1,0 +1,10 @@
+<form [formGroup]="salleForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <button type="submit" [disabled]="salleForm.pristine">Sauvegarder</button>
+  </div>
+  <input formControlName="code" placeholder="code"/>
+  <input formControlName="coutJour" placeholder="code"/>
+  <input formControlName="enPanneOuInutilisable" placeholder="en panne/inutilisable"/>
+  <input formControlName="capacite" placeholder="capacité"/>
+  <input formControlName="etage" placeholder="étage"/>
+</form>
