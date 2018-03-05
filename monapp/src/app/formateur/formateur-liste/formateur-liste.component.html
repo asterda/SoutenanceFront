@@ -1,0 +1,13 @@
+<h3 *ngIf="isLoading"><i>Chargement des formateurs... </i></h3>
+<h3 *ngIf="!isLoading">Liste des formateurs:</h3>
+
+<ul>
+  <li *ngFor="let f of formateurs">
+    {{f.id}}
+    &nbsp;<a href="/admin/formateurs/edit/{{f.id}}">Edit.</a>
+    &nbsp;<a href="/admin/formateurs/delete/{{f.id}}">Suppr.</a>
+    {{f.nom}}&nbsp;{{f.prenom}}&nbsp;{{f.codePostal}}&nbsp;{{f.rue}}&nbsp;{{f.ville}}&nbsp;
+    {{f.telephoneFixe}}&nbsp;{{f.telephoneMobile}}&nbsp;{{f.email}}&nbsp;
+  </li>
+</ul>
+<a href="/admin/formateurs/ajout">Ajouter un formateur</a>

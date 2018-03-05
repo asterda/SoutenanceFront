@@ -17,6 +17,10 @@ import { OrdinateurAjoutComponent } from './ordinateur/ordinateur-ajout/ordinate
 import { OrdinateurUpdateComponent } from './ordinateur/ordinateur-update/ordinateur-update.component';
 import { OrdinateurDeleteComponent } from './ordinateur/ordinateur-delete/ordinateur-delete.component';
 import {FormateurService} from "./formateur.service";
+import { FormateurListeComponent } from './formateur/formateur-liste/formateur-liste.component';
+import { FormateurAjoutComponent } from './formateur/formateur-ajout/formateur-ajout.component';
+import { FormateurUpdateComponent } from './formateur/formateur-update/formateur-update.component';
+import { FormateurDeleteComponent } from './formateur/formateur-delete/formateur-delete.component';
 
 const routes: Routes = [
   // ADMIN
@@ -33,10 +37,10 @@ const routes: Routes = [
   {path: 'admin/ordinateurs/delete/:code', component: OrdinateurDeleteComponent},
 
   // FORMATEURS
-//  {path: 'admin/formateurs', component: FormateurListeComponent},
-//  {path: 'admin/formateurs/ajout', component: FormateurAjoutComponent},
-//  {path: 'admin/formateurs/edit/:code', component: FormateurUpdateComponent},
-//  {path: 'admin/formateurs/delete/:code', component: FormateurDeleteComponent},
+  {path: 'admin/formateurs', component: FormateurListeComponent},
+  {path: 'admin/formateurs/ajout', component: FormateurAjoutComponent},
+  {path: 'admin/formateurs/edit/:id', component: FormateurUpdateComponent},
+  {path: 'admin/formateurs/delete/:id', component: FormateurDeleteComponent},
 
 ];
 
@@ -50,7 +54,11 @@ const routes: Routes = [
     OrdinateurListeComponent,
     OrdinateurAjoutComponent,
     OrdinateurUpdateComponent,
-    OrdinateurDeleteComponent
+    OrdinateurDeleteComponent,
+    FormateurListeComponent,
+    FormateurAjoutComponent,
+    FormateurUpdateComponent,
+    FormateurDeleteComponent
   ],
   imports: [
     BrowserModule,

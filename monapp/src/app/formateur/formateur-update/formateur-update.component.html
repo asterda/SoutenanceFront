@@ -1,0 +1,14 @@
+<form *ngIf="formateurForm && id" [formGroup]="formateurForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <button type="submit" [disabled]="formateurForm.pristine || formateurForm.status == 'INVALID'">Sauvegarder</button>
+  </div>
+  <input formControlName="id" placeholder="identifiant"/>
+  <input formControlName="nom" placeholder="nom"/>
+  <input formControlName="prenom" placeholder="prénom"/>
+  <input formControlName="codePostal" placeholder="code postal"/>
+  <input formControlName="rue" placeholder="rue"/>
+  <input formControlName="ville" placeholder="ville"/>
+  <input formControlName="telephoneFixe" placeholder="téléphone fixe"/>
+  <input formControlName="telephoneMobile" placeholder="téléphone mobile"/>
+  <input formControlName="email" placeholder="email"/>
+</form>
