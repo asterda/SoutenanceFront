@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormateurService} from "../../formateur.service";
+import {FormateurService} from "../../services/formateur.service";
 
 @Component({
   selector: 'app-formateur-delete',

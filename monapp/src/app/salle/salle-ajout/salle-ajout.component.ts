@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Salle} from "../../../model/Salle";
-import {SalleService} from "../../salle.service";
+import {SalleService} from "../../services/salle.service";
 
 @Component({
   selector: 'app-salle-ajout',

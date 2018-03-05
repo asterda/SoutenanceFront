@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {HttpClient} from "@angular/common/http";
-import {Formateur} from "../model/Formateur";
+import {Formateur} from "../../model/Formateur";
 
 @Injectable()
 export class FormateurService {

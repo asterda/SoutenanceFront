@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {FormateurService} from "../../formateur.service";
 import {Formateur} from "../../../model/Formateur";
+import {FormateurService} from "../../services/formateur.service";
 
 @Component({
   selector: 'app-formateur-update',

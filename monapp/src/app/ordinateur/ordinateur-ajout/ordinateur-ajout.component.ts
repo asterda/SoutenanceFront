@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Ordinateur} from "../../../model/Ordinateur";
 import {ActivatedRoute, Router} from "@angular/router";
-import {OrdinateurService} from "../../ordinateur.service";
-import {Salle} from "../../../model/Salle";
+import {OrdinateurService} from "../../services/ordinateur.service";
 
 @Component({
   selector: 'app-ordinateur-ajout',

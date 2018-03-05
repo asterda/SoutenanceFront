@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
-import {Ordinateur} from "../model/Ordinateur";
+import {Ordinateur} from "../../model/Ordinateur";
 
 @Injectable()
 export class OrdinateurService {

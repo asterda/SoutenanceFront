@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Formateur} from "../../../model/Formateur";
-import {FormateurService} from "../../formateur.service";
+import {FormateurService} from "../../services/formateur.service";
 
 @Component({
   selector: 'app-formateur-liste',

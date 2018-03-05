@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {OrdinateurService} from "../../ordinateur.service";
+import {OrdinateurService} from "../../services/ordinateur.service";
 
 @Component({
   selector: 'app-ordinateur-delete',

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Salle} from "../../../model/Salle";
-import {SalleService} from "../../salle.service";
 import 'rxjs/add/operator/finally';
 import 'rxjs/add/operator/delay';
+import {SalleService} from "../../services/salle.service";
 
 @Component({
   selector: 'app-salles',

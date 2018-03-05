@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
 import {Salle} from "../../../model/Salle";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {SalleService} from "../../salle.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {SalleService} from "../../services/salle.service";
 
 @Component({
   selector: 'app-salle',
