@@ -16,7 +16,7 @@ export class SalleService {
     return this.http.get<Salle[]>('http://localhost:8080/factoryBack/salles');
   }
 
-  delete(code: string) {
+  delete(code: string): Observable<any> {
     return this.http.delete('http://localhost:8080/factoryBack/salles/' + code);
   }
 

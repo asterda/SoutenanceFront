@@ -2,17 +2,12 @@
 <h3 *ngIf="!isLoading">Liste des salles:</h3>
 
 <ul>
-  <li *ngFor="let salle of salles | async">
-    <a (click)="select(salle)">{{salle.code}}</a>
+  <li *ngFor="let salle of salles">
+    {{salle.code}}
+    &nbsp;<a href="/admin/salles/edit/{{salle.code}}">Edit.</a>
+    &nbsp;<a href="/admin/salles/delete/{{salle.code}}">Suppr.</a>
+    {{salle.coutJour}}&nbsp;{{salle.enPanneOuInutilisable}}
+    &nbsp;{{salle.capacite}}&nbsp;{{salle.etage}}
   </li>
 </ul>
-
-<div *ngIf="selectedSalle">
-  <h3>Editer: {{selectedSalle.code}}</h3>
-  <app-salle [salle]="selectedSalle" [modePersistence]="update" (dbChanged)="onDbChanged($event)"></app-salle>
-</div>
-
-<div *ngIf="!selectedSalle">
-  <h3>Créer nouvelle salle:</h3>
-  <app-salle [salle]="nouvelleSalle" [modePersistence]="create" (dbChanged)="onDbChanged($event)"></app-salle>
-</div>
+<a href="/admin/salles/ajout">Ajouter une salle</a>
