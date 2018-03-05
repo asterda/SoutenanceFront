@@ -8,7 +8,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {SalleService} from "./salle.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import { SallesComponent } from './salles/salles.component';
+import {RouterModule, Routes} from "@angular/router";
 
+const routes: Routes = [
+  {path: 'salles', component: SallesComponent}
+];
 
 @NgModule({
   declarations: [
@@ -19,7 +23,8 @@ import { SallesComponent } from './salles/salles.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     SalleService

@@ -3,6 +3,7 @@ import {Salle} from "../../model/Salle";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ModePersistence} from "../../model/ModePersistence";
 import {SalleService} from "../salle.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-salle',
@@ -19,7 +20,7 @@ export class SalleComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private salleService: SalleService
+    private salleService: SalleService,
   ) {
     this.createForm();
   }
