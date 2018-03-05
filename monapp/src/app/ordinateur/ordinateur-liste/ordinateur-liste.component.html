@@ -1,0 +1,15 @@
+<h3 *ngIf="isLoading"><i>Chargement des ordinateurs... </i></h3>
+<h3 *ngIf="!isLoading">Liste des ordinateurs:</h3>
+
+<ul>
+  <li *ngFor="let ordi of ordinateurs">
+    {{ordi.code}}
+    &nbsp;<a href="/admin/ordinateurs/edit/{{ordi.code}}">Edit.</a>
+    &nbsp;<a href="/admin/ordinateurs/delete/{{ordi.code}}">Suppr.</a>
+    {{ordi.enPanneOuInutilisable}}
+    &nbsp;{{ordi.processeur}}&nbsp;{{ordi.ramGiga}}
+    &nbsp;{{ordi.ddGiga}}&nbsp;{{ordi.dateAchat}}
+  </li>
+</ul>
+<a href="/admin/ordinateurs/ajout">Ajouter un ordinateur</a>
+

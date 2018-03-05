@@ -1,0 +1,15 @@
+<form *ngIf="ordinateurForm" [formGroup]="ordinateurForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <button type="submit" [disabled]="ordinateurForm.pristine || ordinateurForm.status == 'INVALID'">Sauvegarder</button>
+  </div>
+  <input formControlName="code" placeholder="code"/>
+  <input formControlName="coutJour" placeholder="coutJour"/>
+  <select formControlName="enPanneOuInutilisable">
+    <option value="true">En panne</option>
+    <option value="false">En état de marche</option>
+  </select>
+  <input formControlName="processeur" placeholder="processeur"/>
+  <input formControlName="ramGiga" placeholder="ram (en giga)"/>
+  <input formControlName="ddGiga" placeholder="disque dur (en giga)"/>
+  <input type="date" formControlName="dateAchat" placeholder="date d'achat"/>
+</form>
