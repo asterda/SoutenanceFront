@@ -3,27 +3,27 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { SalleComponent } from './salle/salle.component';
+import { SalleUpdateComponent } from './salle/salle-update/salle-update.component';
 import {HttpClientModule} from "@angular/common/http";
 import {SalleService} from "./salle.service";
 import {ReactiveFormsModule} from "@angular/forms";
-import { SallesComponent } from './salles/salles.component';
+import {SalleListeComponent} from './salle//salle-liste/salle-liste.component';
 import {RouterModule, Routes} from "@angular/router";
-import { SalleDeleteComponent } from './salle-delete/salle-delete.component';
-import { SalleAjoutComponent } from './salle-ajout/salle-ajout.component';
+import { SalleDeleteComponent } from './salle//salle-delete/salle-delete.component';
+import { SalleAjoutComponent } from './salle//salle-ajout/salle-ajout.component';
 
 const routes: Routes = [
-  {path: 'admin/salles', component: SallesComponent},
+  {path: 'admin/salles', component: SalleListeComponent},
   {path: 'admin/salles/ajout', component: SalleAjoutComponent},
-  {path: 'admin/salles/edit/:code', component: SalleComponent},
+  {path: 'admin/salles/edit/:code', component: SalleUpdateComponent},
   {path: 'admin/salles/delete/:code', component: SalleDeleteComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SalleComponent,
-    SallesComponent,
+    SalleUpdateComponent,
+    SalleListeComponent,
     SalleDeleteComponent,
     SalleAjoutComponent
   ],

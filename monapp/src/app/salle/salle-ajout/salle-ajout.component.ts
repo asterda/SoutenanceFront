@@ -1,43 +1,35 @@
-import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
-import {Salle} from "../../model/Salle";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ModePersistence} from "../../model/ModePersistence";
-import {SalleService} from "../salle.service";
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Salle} from "../../../model/Salle";
+import {SalleService} from "../../salle.service";
 
 @Component({
-  selector: 'app-salle',
-  templateUrl: './salle.component.html',
-  styleUrls: ['./salle.component.css']
+  selector: 'app-salle-ajout',
+  templateUrl: './salle-ajout.component.html',
+  styleUrls: ['./salle-ajout.component.css']
 })
-export class SalleComponent implements OnInit {
+export class SalleAjoutComponent implements OnInit {
 
-  code: string;
   salleForm: FormGroup;
-  salle: Salle;
+  salle: Salle = new Salle();
 
   constructor(
     private fb: FormBuilder,
     private salleService: SalleService,
     private router: Router,
     private route: ActivatedRoute
-  ) {
-    this.route.params.subscribe(params => {
-      this.code = params['code'];
-      this.salleService.findOne(this.code).subscribe(salle => {
-        this.salle = salle;
-        this.createForm(this.salle);
-      });
-    });
-  }
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.createForm(this.salle);
+  }
 
   createForm(salle: Salle) {
     this.salleForm = this.fb.group({
-      code: [{value: salle.code, disabled: true}, Validators.compose([
+      code: ['', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z]+$')
+        Validators.pattern('^[a-zA-Z]{5,}$')
       ])],
       coutJour: [salle.coutJour, Validators.compose([
         Validators.required,
@@ -55,14 +47,13 @@ export class SalleComponent implements OnInit {
         Validators.required,
         Validators.pattern('^-?[0-9]$')
       ])]
-      });
+    });
   }
 
   onSubmit() {
     this.salle = this.preparePersistSalle();
-    this.salle.code = this.code; // undefined car disabled
-    this.salleService.update(this.salle).subscribe(
-      salleUp => this.salle = salleUp,
+    this.salleService.create(this.salle).subscribe(
+      salleNw => this.salle = salleNw,
       err => {},
       () => this.router.navigateByUrl('admin/salles')
     );
@@ -70,9 +61,8 @@ export class SalleComponent implements OnInit {
 
   preparePersistSalle(): Salle {
     const formModel = this.salleForm.value;
-    let code: string;
     const sallePersist: Salle = {
-      code: code,
+      code: formModel.code as string,
       coutJour: formModel.coutJour as number,
       enPanneOuInutilisable: formModel.enPanneOuInutilisable as boolean,
       capacite: formModel.capacite as number,

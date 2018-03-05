@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {SalleService} from "../salle.service";
+import {SalleService} from "../../salle.service";
 
 @Component({
   selector: 'app-salle-delete',
